@@ -15,3 +15,5 @@ class Config:
 
     #REPOSITORY
     REPOSITORY_TOKEN = os.environ.get('REPOSITORY_TOKEN')
+    BASE_ID = os.environ.get('BASE_ID')
+    TABLE_NAME = os.environ.get('TABLE_NAME')

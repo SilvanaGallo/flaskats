@@ -47,7 +47,6 @@ class AirtableRepository(Repository):
         return r.json()
     
     
-    # It needs a refactorization
     def _create_dictionary(self) -> dict:
 
         message: dict = {}
