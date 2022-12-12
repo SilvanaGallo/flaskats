@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block breadcrumbs %}
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url({{ url_for('static', filename='img/hero-bg.jpg') }});">
+    <div class="container position-relative d-flex flex-column align-items-center">
+        <h2>Home</h2>
+        <ol>
+            <li><a href="/">Home</a></li>
+        </ol> 
+    </div>
+    </div>
+{% endblock breadcrumbs %}
+
+{% block hero_content %}
+  <section id="hero" class="hero d-flex align-items-center">    
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-4">
+          <h2>{{ offer.title }}</h2>
+          <blockquote data-aos-delay="1">
+            <p>{{ offer.description }}</p>
+            <small>{{ offer.code }}</small>
+            <p class="article-content">Salary range: {{ offer.salary_range }}</p>
+          </blockquote>
+
+          <blockquote data-aos-delay="1">
+            <p>Requirements: </p>
+            {% if offer.requirements %}
+              <ul>
+              {% for r in offer.requirements %}
+                <li>{{ r }}</li>
+              {% endfor %}
+              </ul>
+            {% endif %}
+          </blockquote>          
+          <div class="d-flex" data-aos-delay="2">
+            <a href="{{ url_for('main.application') }}" class="btn-get-started">Join us</a>
+          </div>
+        </div>
+      </div>
+      </div>
+  </section><!-- End Hero Section -->
+  
+{% endblock hero_content %}

@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+core.*
+htmlcov
+*.env
+htmlcov/
+.coverage
+.vscode/
+ddagent-install.log
