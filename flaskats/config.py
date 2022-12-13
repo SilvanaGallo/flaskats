@@ -9,9 +9,15 @@ class Config:
     #MAILER
     MAIL_SERVER = os.environ.get('MAIL_SERVER')
     MAIL_PORT = os.environ.get('MAIL_PORT')
-    MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS')
-    MAIL_USERNAME = os.environ.get('EMAIL_USER')
-    MAIL_PASSWORD = os.environ.get('EMAIL_PASS')
+    MAIL_USE_TLS = False
+    MAIL_USE_SSL = False
+    #MAIL_DEBUG = True
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD = os.environ.get('MAIL_API_KEY')
+    MAIL_DEFAULT_SENDER = "usefulapp2022@outlook.com"
+    MAIL_MAX_EMAILS = None
+    #MAIL_SUPRESS_SEND = False
+    MAIL_ASCII_ATTACHMENTS = False
 
     #REPOSITORY
     REPOSITORY_TOKEN = os.environ.get('REPOSITORY_TOKEN')

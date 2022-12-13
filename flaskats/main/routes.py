@@ -1,8 +1,8 @@
 from flask import render_template, redirect, Blueprint, flash, url_for
 from flaskats.main.forms import ApplicationForm
 from flaskats.broker import RabbitmqProducer
-from datetime import datetime
 from json import dumps
+from flaskats.dto import Application
 
 main = Blueprint('main', __name__)
 
@@ -23,22 +23,17 @@ def home():
     return render_template('home.html', offer=job, title='Offer')
 
 
-
 @main.route("/apply", methods=['GET','POST'])
 def application():
     form = ApplicationForm()
     if form.validate_on_submit():
-
-        #Build payload or DTO?
-        application = { 'candidate': { 'name': form.name.data,
-                                       'candidate_email': form.email.data },
-                        'job': job['code'],
-                        'date': datetime.now().isoformat()
-        }
-
+        #Build payload DTOs
+        application = Application(job=job['code'],
+                                  name=form.name.data, 
+                                  email=form.email.data)
         #Queue application
         producer = RabbitmqProducer() 
-        producer.submit_application(application)
+        producer.submit_application(application.to_json())
 
         flash('Your application has been sent!', 'success')
     return render_template('application.html', 

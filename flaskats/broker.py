@@ -1,5 +1,6 @@
 from flask import request
 from flaskats import Config
+from flaskats.dto import Application
 import requests
 import json
 import pika
@@ -15,7 +16,6 @@ class RabbitmqProducer():
 
     def submit_application(self, application):
         self.channel.basic_publish(exchange='', routing_key='applications', body=json.dumps(application))
-        print(f"Sent Message: {application}")
         self._close_connection()
 
     def _close_connection(self):
@@ -24,8 +24,7 @@ class RabbitmqProducer():
 class RabbitmqConsumer():
 
     def on_message_received(self,ch, method, properties, body):
-        print(body)
-        self.repository.new_candidate(body) 
+        self.repository.create_record(Application.from_json(json.loads(body)) )
         
     def __init__(self, repository):
         self.connection_parameters = pika.ConnectionParameters(Config.BROKER_HOST)
