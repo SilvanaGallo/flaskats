@@ -1,6 +1,6 @@
 from flask import render_template, redirect, Blueprint, flash, url_for
 from flaskats.main.forms import ApplicationForm
-from flaskats.broker import RabbitmqProducer
+from flaskats.broker import Producer
 from json import dumps
 from flaskats.dto import Application
 
@@ -32,7 +32,7 @@ def application():
                                   name=form.name.data, 
                                   email=form.email.data)
         #Queue application
-        producer = RabbitmqProducer() 
+        producer = Producer() 
         producer.submit_application(application.to_json())
 
         flash('Your application has been sent!', 'success')

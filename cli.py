@@ -1,11 +1,11 @@
 import click
 import requests
 import json
-from flaskats.broker import RabbitmqConsumer
-from flaskats import worker, mail_sender, repository
+from flaskats import worker, notifier
 import signal
 import time
-from flaskats.notifier import CandidateNotifier
+from flask.cli import with_appcontext
+
  
 def handler(signum, frame):
     res = input("\nCtrl-c was pressed. Do you really want to exit? y/n ")
@@ -29,8 +29,8 @@ def candidates():
     pass
 
 @candidates.command()
+@with_appcontext
 def check_candidates():
-    notifier = CandidateNotifier(mail_sender, repository)
     notifier.check_candidates()
 
 

@@ -5,14 +5,17 @@ import requests
 import json
 import pika
 
-class RabbitmqProducer():
-        
+class RabbitmqConnectionMixin():
+
     def __init__(self):
         self.connection_parameters = pika.ConnectionParameters(Config.BROKER_HOST)
         self.connection = pika.BlockingConnection(self.connection_parameters)
 
         self.channel = self.connection.channel()
         self.channel.queue_declare(queue='applications')
+
+
+class Producer(RabbitmqConnectionMixin):  
 
     def submit_application(self, application):
         self.channel.basic_publish(exchange='', routing_key='applications', body=json.dumps(application))
@@ -21,17 +24,14 @@ class RabbitmqProducer():
     def _close_connection(self):
         self.connection.close()
 
-class RabbitmqConsumer():
+
+class Consumer(RabbitmqConnectionMixin):
 
     def on_message_received(self,ch, method, properties, body):
         self.repository.create_record(Application.from_json(json.loads(body)) )
         
     def __init__(self, repository):
-        self.connection_parameters = pika.ConnectionParameters(Config.BROKER_HOST)
-        self.connection = pika.BlockingConnection(self.connection_parameters)
-
-        self.channel = self.connection.channel()
-        self.channel.queue_declare(queue='applications')
+        RabbitmqConnectionMixin.__init__(self)
         self.repository = repository
 
     def start(self):

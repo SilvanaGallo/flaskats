@@ -15,13 +15,13 @@ class CandidateNotifier:
             for app in applications['records']:
                 app_dto = Application.from_dict(app['fields'])
 
-                if app_dto.status in ['Hired', 'Rejected']:
+                if app_dto.status in ['Hired', 'Rejected'] and app_dto.notified == False:
                     print(f"Candidate {app_dto.name} is {app_dto.status}")
-                    # if app_dto.status == 'Hired':
-                    #     self.sender.hired_candidate(app_dto)
+                    if app_dto.status == 'Hired':
+                        self.sender.hired_candidate(app_dto)
                         
-                    # if app_dto.status == 'Rejected':
-                    #     self.sender.rejected_candidate(app_dto)
+                    if app_dto.status == 'Rejected':
+                        self.sender.rejected_candidate(app_dto)
                                        
                     #add to notified list
                     app_dto.notified = True
