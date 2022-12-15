@@ -1,25 +1,25 @@
-from flask import render_template, redirect, Blueprint, flash, url_for
+from flask import render_template, Blueprint, flash, after_this_request, current_app
 from flaskats.main.forms import ApplicationForm
 from flaskats.broker import Producer
-from json import dumps
+from json import load
+import os
 from flaskats.dto import Application
 
 main = Blueprint('main', __name__)
+job = {}
 
-job = {
-    'title': 'Christmas season offer',
-    'code': 'BE03-345',
-    'salary_range': '2000-3000',
-    'description': 'The best offer ever',
-    'requirements': ['req 1',
-                     'req 2',
-                     'req 3',
-                     'req 4']
-}
+@main.before_app_first_request
+def _load_offer():
+    print("before_request executing!")
+    # Loading offer
+    f = open(os.path.join(current_app.root_path,'static/offer.json'))
+    global job
+    job = load(f)
+    f.close()
 
 @main.route("/")
 @main.route("/home")
-def home():
+def home(): 
     return render_template('home.html', offer=job, title='Offer')
 
 

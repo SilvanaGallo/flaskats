@@ -1,10 +1,7 @@
 from abc import ABC, abstractmethod
-from flask import request
-import requests
-import json
-
 from flaskats import Config
 from flaskats.dto import Application
+import requests
 
 class Repository(ABC):
 
@@ -62,7 +59,6 @@ class AirtableRepository(Repository):
                         headers = self.headers,
                         json = self._create_json_update(dtos)
                     )
-        print(r.json())
         return r.json()
 
 

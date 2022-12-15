@@ -1,7 +1,5 @@
-from flask import request
 from flaskats import Config
 from flaskats.dto import Application
-import requests
 import json
 import pika
 
@@ -36,7 +34,6 @@ class Consumer(RabbitmqConnectionMixin):
 
     def start(self):
         self.channel.basic_consume(queue='applications', auto_ack=True, on_message_callback=self.on_message_received)
-        print("Starting worker")
         self.channel.start_consuming()
 
     def close_connection(self):

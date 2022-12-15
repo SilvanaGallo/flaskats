@@ -11,7 +11,8 @@ def handler(signum, frame):
     res = input("\nCtrl-c was pressed. Do you really want to exit? y/n ")
     if res == 'y':
         worker.close_connection()
-        exit(1)
+        print("Closing worker connection")
+        exit(0)
  
 signal.signal(signal.SIGINT, handler)
 
@@ -21,6 +22,7 @@ def workers():
 
 @workers.command()
 def start_worker():
+    print("Starting worker")
     worker.start()
 
 
@@ -32,6 +34,7 @@ def candidates():
 @with_appcontext
 def check_candidates():
     notifier.check_candidates()
+    print("Notifications sent")
 
 
 cli = click.CommandCollection(sources=[workers, candidates])

@@ -14,7 +14,7 @@ class Config:
     #MAIL_DEBUG = True
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_API_KEY')
-    MAIL_DEFAULT_SENDER = "usefulapp2022@outlook.com"
+    MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER')
     MAIL_MAX_EMAILS = None
     #MAIL_SUPRESS_SEND = False
     MAIL_ASCII_ATTACHMENTS = False
