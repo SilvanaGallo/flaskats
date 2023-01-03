@@ -1,93 +1,94 @@
 {% extends "layout.html" %}
 
 {% block breadcrumbs %}
-    <div class="breadcrumbs d-flex align-items-center" style="background-image: url({{ url_for('static', filename='img/hero-bg.jpg') }});">
-    <div class="container position-relative d-flex flex-column align-items-center">
-        <h2>Apply</h2>
-        <ol>
-            <li><a href="/">Home</a></li>
-            <li>Apply</li>
-        </ol> 
-    </div>
-    </div>
+<div class="breadcrumbs d-flex align-items-center"
+  style="background-image: url({{ url_for('static', filename='img/hero-bg.jpg') }});">
+  <div class="container position-relative d-flex flex-column align-items-center">
+    <h2>Apply</h2>
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li>Apply</li>
+    </ol>
+  </div>
+</div>
 {% endblock breadcrumbs %}
 
 {% block content %}
 <section id="contact" class="contact">
-    <div class="container position-relative" >
-      <div class="row gy-4 d-flex justify-content-end">
-        <div class="col-lg-5" >
-          <div class="info-item d-flex">
-            <i class="bi bi-briefcase flex-shrink-0"></i>
-            <div>
-              <h5>Offer:</h5>
-              <p>{{ offer.title }}</p>
-            </div>
-          </div>
-
-          <div class="info-item d-flex">
-            <i class="bi bi-list flex-shrink-0"></i>
-            <div>
-              <h5>Description:</h5>
-              <p>{{ offer.description }}</p>
-            </div>
-          </div>
-
-          <div class="info-item d-flex">
-            <i class="bi bi-hash flex-shrink-0"></i>
-            <div>
-              <h5>Code:</h5>
-              <p>{{ offer.code }}</p>
-            </div>
+  <div class="container position-relative">
+    <div class="row gy-4 d-flex justify-content-end">
+      <div class="col-lg-5">
+        <div class="info-item d-flex">
+          <i class="bi bi-briefcase flex-shrink-0"></i>
+          <div>
+            <h5>Offer:</h5>
+            <p>{{ offer.title }}</p>
           </div>
         </div>
 
-        <div class="col-lg-6" >
-            <form method="POST" action="" role="form" class="email-form">
-                    {{ form.hidden_tag() }}
-                    <div class="form-group mt-3">
-                    {{ form.name.label(class="form-control-label") }}
+        <div class="info-item d-flex">
+          <i class="bi bi-list flex-shrink-0"></i>
+          <div>
+            <h5>Description:</h5>
+            <p>{{ offer.description }}</p>
+          </div>
+        </div>
 
-                    {% if form.name.errors %}
-                        {{ form.name(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.name.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.name(class="form-control") }}
-                    {% endif %}
-                    </div>
-            
-                    <div class="form-group mt-3">
-                        {{ form.email.label(class="form-control-label") }}
-                        {% if form.email.errors %}
-                            {{ form.email(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.email.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
-                        {% else %}
-                            {{ form.email(class="form-control") }}
-                        {% endif %}
-                    </div>
-                    <div class="form-group mt-3">
-                      {% with messages = get_flashed_messages(with_categories=true) %}
-                        {% if messages %}
-                          {% for category, message in messages %}
-                            <div class="alert alert-{{category}}">
-                                {{ message }}
-                            </div>
-                          {% endfor %}
-                        {% endif%}
-                      {% endwith %}
-                    </div>
-                <div class="text-center">{{ form.submit(class="btn btn-outline-info",type="submit") }}</div>
-          </form>
-        </div><!-- End Contact Form -->
+        <div class="info-item d-flex">
+          <i class="bi bi-hash flex-shrink-0"></i>
+          <div>
+            <h5>Code:</h5>
+            <p>{{ offer.code }}</p>
+          </div>
+        </div>
       </div>
+
+      <div class="col-lg-6">
+        <form method="POST" action="" role="form" class="email-form">
+          {{ form.hidden_tag() }}
+          <div class="form-group mt-3">
+            {{ form.name.label(class="form-control-label") }}
+
+            {% if form.name.errors %}
+            {{ form.name(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form.name.errors %}
+              <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+            {% else %}
+            {{ form.name(class="form-control") }}
+            {% endif %}
+          </div>
+
+          <div class="form-group mt-3">
+            {{ form.email.label(class="form-control-label") }}
+            {% if form.email.errors %}
+            {{ form.email(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form.email.errors %}
+              <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+            {% else %}
+            {{ form.email(class="form-control") }}
+            {% endif %}
+          </div>
+          <div class="form-group mt-3">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{category}}">
+              {{ message }}
+            </div>
+            {% endfor %}
+            {% endif%}
+            {% endwith %}
+          </div>
+          <div class="text-center">{{ form.submit(class="btn btn-outline-info",type="submit") }}</div>
+        </form>
+      </div><!-- End Contact Form -->
     </div>
-  </section><!-- End Contact Section -->
+  </div>
+</section><!-- End Contact Section -->
 {% endblock content %}

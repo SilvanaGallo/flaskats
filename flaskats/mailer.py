@@ -25,8 +25,6 @@ class MailSender:
                       html=message,
                       subject=subject)
         self._send_email(msg)
-       
-
 
     def hired_candidate(self, app):
         message = f'''<h1>Offer</h1>

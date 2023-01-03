@@ -33,7 +33,7 @@ def application():
                                   email=form.email.data)
         #Queue application
         producer = Producer() 
-        producer.submit_application(application.to_json())
+        producer.submit_application(application)
 
         flash('Your application has been sent!', 'success')
     return render_template('application.html', 
