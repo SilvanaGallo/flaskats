@@ -3,14 +3,14 @@ from flask import Flask
 from flask_mail import Mail
 from flaskats.config import Config
 from flaskats.repository import AirtableRepository
-#from flaskats.broker import Consumer
+from flaskats.broker import Consumer
 from flaskats.notifier import CandidateNotifier
 from flaskats.mailer import MailSender
 
 
 mail = Mail()
 repository = AirtableRepository()
-#worker = Consumer(repository=repository)
+worker = Consumer(repository=repository)
 mail_sender = MailSender(mail)
 notifier = CandidateNotifier(mail_sender, repository)
 
