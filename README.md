@@ -5,9 +5,9 @@ First version/tag was a flask project with Airtable API.
 Second challenge/version works with Recruitee API and Hello Sign for contract signing.
 In addition, we incorporate a DB for users and offers, so it's necessary to register users for administration purposes.
 
-======================================================================================================================= 
+--------------------------------------------
 To register an user, follow the next steps:
-=======================================================================================================================
+--------------------------------------------
 Enter to the command line and execute  
 	flask --app flaskats shell
 then  
@@ -20,7 +20,7 @@ then
     db.session.commit()
 
 Now, you can login into an admin account.
-========================================================================================================================
+--------------------------------------------
 
 
 
