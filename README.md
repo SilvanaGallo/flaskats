@@ -9,20 +9,27 @@ In addition, we incorporate a DB for users and offers, so it's necessary to regi
 To register an user, follow the next steps:
 --------------------------------------------
 Enter to the command line and execute  
-	flask --app flaskats shell
-then  
- 	from flaskats import db, bcrypt
-	from flaskats.models.user import User
 
-	hash_password = bcrypt.generate_password_hash("password").decode('utf-8')
+    flask --app flaskats shell
+
+then  
+
+    from flaskats import db, bcrypt
+    from flaskats.models.user import User
+
+    hash_password = bcrypt.generate_password_hash("password").decode('utf-8')
     user = User(username = "Name", email = "email", password=hash_password)
     db.session.add(user)
     db.session.commit()
 
 Now, you can login into an admin account.
+
 --------------------------------------------
 
-
+To obtain active offers:
+--------------------------------------------
+Enter to the command line and execute
+    curl -X GET 'https://api.recruitee.com/c/{company_id}/offers?scope=active&view_mode=brief' -H 'Authorization: Bearer {api_token}' > offers.json
 
 
 
