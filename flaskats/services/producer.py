@@ -4,7 +4,7 @@ from flaskats.services import RabbitmqConnection
 class Producer(RabbitmqConnection):
     '''For event submission'''
 
-    def publish_event(self, event) -> bool:
+    def submit_event(self, event) -> bool:
         '''Enqueue an event to the queue'''
         try:
             self.channel.basic_publish(exchange='',

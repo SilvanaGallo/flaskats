@@ -1,1 +1,1 @@
-from .forms import OfferForm, OfferUpdateForm, ApplicationForm
+from .forms import OfferForm, ApplicationForm, OfferUpdateForm

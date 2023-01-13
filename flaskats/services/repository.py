@@ -3,7 +3,7 @@ import requests
 from flaskats import Config
 from flaskats.dtos import Application
 from flaskats.models import ApplicationStatus
-from flaskats import offers_repository
+from flaskats.repositories import SQLAlchemyOffersRepository
 
 
 class Repository(ABC):
@@ -23,6 +23,9 @@ class Repository(ABC):
 
 class RecruiteeRepository(Repository):
 
+    def __init__(self):
+        self.offers_repository = SQLAlchemyOffersRepository()
+
     # repository URLs class variables
     candidates_url = f"https://api.recruitee.com/c/{Config.COMPANY_ID}/candidates"
     update_url = f"https://api.recruitee.com/c/{Config.COMPANY_ID}/bulk/candidates/tags"
@@ -34,24 +37,26 @@ class RecruiteeRepository(Repository):
         for app in response['candidates']:
 
             for job in app["placements"]:
-                job_code: int = offers_repository.get_offer(job['id']).code
+                job_code: int = self.offers_repository.get_offer_by_repository_id(job['offer_id']).code
 
                 app_dict: dict = {
-                            'fields': {'name': app["name"],
-                                    'email': app['emails'][0],
-                                    'job': job_code,
-                                    'date': job['date']}
+                                'name': app["name"],
+                                'email': app['emails'][0],
+                                'job': job_code,
+                                'date': job['created_at'],
+                                'candidate_id': job['candidate_id']
                             }
 
-                if job['disqualify_reason'] is None:
+                if 'disqualify_reason' in job:
                     app_dict['status'] = ApplicationStatus.REJECTED
                 else:
                     if job['hired_at'] is not None:
                         app_dict['status'] = ApplicationStatus.HIRED
 
-                app_dict['fields']['notified'] = ("notified" in app['tags'])
+                app_dto = Application.from_dict(app_dict)
+                app_dto.notified = self.get_notified(app_dto)
 
-                response_dict['records'].append(Application.from_dict(app_dict))
+                response_dict['records'].append(app_dto)
         return response_dict
 
     def list_records(self, params=None):
@@ -63,6 +68,7 @@ class RecruiteeRepository(Repository):
                         params=params
                     )
         response = self._create_dictionary(response.json())
+
         return response
 
     def create_record(self, app: Application):
@@ -83,8 +89,6 @@ class RecruiteeRepository(Repository):
         for item_id, dto in dtos.items():
             data_dict["candidates"].append(item_id)
         data_dict["tags"] = ["notified"]
-
-        print(data_dict)
         return data_dict
 
     def update_notified_records(self, dtos):
@@ -96,12 +100,13 @@ class RecruiteeRepository(Repository):
         return response.json()
 
     def get_candidate(self, app_dto):
-        url = f"{self.candidates_url}{app_dto.id}"
+        url = f"{self.candidates_url}/{app_dto.candidate_id}"
         response = requests.get(url, headers=self.headers)
         return response
 
     def get_notified(self, app_dto) -> bool:
         response = self.get_candidate(app_dto)
+        response = response.json()
         return "notified" in response["candidate"]["tags"]
 
 

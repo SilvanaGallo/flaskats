@@ -8,7 +8,7 @@ class HiredCandidateConsumer(Consumer):
         '''Sends the application to the repository'''
         self.contract_sender.send_contract(Application.from_json(body))
 
-    def __init__(self, contract_sender):
+    def __init__(self, queue, contract_sender):
         '''Sets the repository dependency'''
-        super().__init__()
+        super().__init__(queue)
         self.contract_sender = contract_sender

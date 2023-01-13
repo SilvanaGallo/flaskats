@@ -13,7 +13,7 @@ from flaskats import mail
 repository = RecruiteeRepository()
 application_worker = ApplicationConsumer(repository=repository)
 contract_sender = HelloSignContractSender()
-hired_worker = HiredCandidateConsumer(contract_sender)
+hired_worker = HiredCandidateConsumer(queue='hired', contract_sender=contract_sender)
 mail_sender = MailSender(mail)
 notifier = CandidateNotifier(mail_sender, repository)
 
@@ -21,9 +21,9 @@ notifier = CandidateNotifier(mail_sender, repository)
 def handler(signum, frame):
     res = input("\nCtrl-c was pressed. Do you really want to exit? y/n ")
     if res == 'y':
-        if application_worker:
+        if application_worker.is_started():
             application_worker.close_connection()
-        if hired_worker:
+        if hired_worker.is_started():
             hired_worker.close_connection()
         print("Closing workers connections")
         exit(0)

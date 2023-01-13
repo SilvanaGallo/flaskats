@@ -10,10 +10,11 @@ class Application:
 
     name: str
     email: str
+    candidate_id: int
     job: str
     disqualify_reason: str = ''
     hired_at: str = ""
     date: str = datetime.now().isoformat()
     status: str = ApplicationStatus.INBOX
     notified: bool = False
-    
+

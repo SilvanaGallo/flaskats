@@ -32,6 +32,10 @@ class OffersRepository(ABC):
     @abstractmethod
     def get_offer_by_code(self, code):
         return
+    
+    @abstractmethod
+    def get_offer_by_repository_id(self, repository_id):
+        return
 
     @abstractmethod
     def delete_offer(self, code):
@@ -60,10 +64,10 @@ class SQLAlchemyOffersRepository(OffersRepository):
         return new_offer
 
     def get_offer(self, id):
-        return Offer.query.get_or_404(id)
+        return Offer.query.get(id)
 
     def update_offer(self, offer_dto):
-        updated_offer = Offer.query.get_or_404(offer_dto.id)
+        updated_offer = Offer.query.get(offer_dto.id)
         updated_offer.title=offer_dto.title
         updated_offer.code=offer_dto.code
         updated_offer.repository_id=offer_dto.repository_id
@@ -75,13 +79,16 @@ class SQLAlchemyOffersRepository(OffersRepository):
         return updated_offer
 
     def publish_offer(self, id):
-        updated_offer = Offer.query.get_or_404(id)
+        updated_offer = Offer.query.get(id)
         updated_offer.status=OfferStatus.PUBLISHED
         db.session.commit()
         return updated_offer  
 
     def get_offer_by_code(self, code):
         return Offer.query.filter_by(code=code).first()
+
+    def get_offer_by_repository_id(self, repository_id):
+        return Offer.query.filter_by(repository_id=repository_id).first()
 
     def delete_offer(self, code):
         offer_to_delete = self.get_offer_by_code(code)
