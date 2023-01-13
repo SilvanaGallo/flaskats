@@ -31,7 +31,12 @@ To obtain active offers:
 Enter to the command line and execute
     curl -X GET 'https://api.recruitee.com/c/{company_id}/offers?scope=active&view_mode=brief' -H 'Authorization: Bearer {api_token}' > offers.json
 
+--------------------------------------------
 
+To obtain info about a candidate:
+--------------------------------------------
+Enter to the command line and execute
+    curl -X GET 'https://api.recruitee.com/c/{company_id}/candidates/46369420' -H 'Authorization: Bearer {api_token}' >candidate.json
 
 
 
