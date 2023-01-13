@@ -1,18 +1,5 @@
 {% extends "layout.html" %}
 
-{% block breadcrumbs %}
-<div class="breadcrumbs d-flex align-items-center"
-  style="background-image: url({{ url_for('static', filename='img/hero-bg.jpg') }});">
-  <div class="container position-relative d-flex flex-column align-items-center">
-    <h2>Apply</h2>
-    <ol>
-      <li><a href="/">Home</a></li>
-      <li>Apply</li>
-    </ol>
-  </div>
-</div>
-{% endblock breadcrumbs %}
-
 {% block content %}
 <section id="contact" class="contact">
   <div class="container position-relative">
@@ -74,19 +61,10 @@
             {{ form.email(class="form-control") }}
             {% endif %}
           </div>
-          <div class="form-group mt-3">
-            {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-            {% for category, message in messages %}
-            <div class="alert alert-{{category}}">
-              {{ message }}
-            </div>
-            {% endfor %}
-            {% endif%}
-            {% endwith %}
-          </div>
+          <br />
           <div class="text-center">{{ form.submit(class="btn btn-outline-info",type="submit") }}</div>
         </form>
+        <a class="back-button" onclick="history.back()" type="button">Back</a>
       </div><!-- End Contact Form -->
     </div>
   </div>

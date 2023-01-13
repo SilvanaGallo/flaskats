@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block content %}
+<section id="contact" class="contact">
+    <div class="container position-relative">
+        <div class="row gy-4 d-flex justify-content-end">
+
+            {% for offer in offers.items %}
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h5>{{ offer.title }}</h5>
+                    </div>
+                    <p class="article-content">{{ offer.description }}</p>
+                    <button type="button" class="btn btn-info">
+                        <i class="bi bi-pencil">
+                            <a href="{{ url_for('offers.show_offer', offer_code=offer.code) }}" class="linka">
+                                More details
+                            </a>
+                        </i>
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- Basic Pagination -->
+            <nav>
+                <ul class="pagination justify-content-center">
+                    {% for page_num in offers.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                    {% if page_num %}
+                    {% if offers.page == page_num %}
+                    <li class="page-item active"><a class="page-link"
+                            href="{{ url_for('offers.list_offers', page=page_num) }}">{{page_num}}</a>
+                    </li>
+
+                    {% else %}
+                    <li class="page-item"><a class="page-link"
+                            href="{{ url_for('offers.list_offers', page=page_num) }}">{{page_num}}</a>
+                    </li>
+                    {% endif%}
+                    {% else %}
+                    <li class="page-item">...</li>
+                    {% endif%}
+                    {% endfor %}
+                </ul>
+            </nav><!-- End Basic Pagination -->
+        </div>
+    </div>
+</section>
+{% endblock content %}

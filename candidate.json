@@ -1,0 +1,319 @@
+{
+    "candidate": {
+        "cover_letter": null,
+        "source": "career_site",
+        "admin_ids": [],
+        "initials": "MV",
+        "attachments_count": 0,
+        "open_question_answers": [],
+        "cv_url": "https://recruitee-main.s3.eu-central-1.amazonaws.com/candidates/46369420/pdf_cv_tutdmhym8fec.pdf?response-content-disposition=inline&response-content-type=application%2Fpdf&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYHB7CA5RLR4Y3ON%2F20230112%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20230112T144734Z&X-Amz-Expires=36000&X-Amz-SignedHeaders=host&X-Amz-Signature=a47ce86d8a58f6c7bb143a830f76d9522e848f3ac51474e9312c769090d5d9fa",
+        "mailbox_messages_count": 0,
+        "links": [],
+        "gdpr_consent_request_completed_at": null,
+        "rating_visible": true,
+        "in_active_share": false,
+        "social_links": [],
+        "online_data": null,
+        "referrer": null,
+        "id": 46369420,
+        "photo_thumb_url": "https://recruitee-main.s3.eu-central-1.amazonaws.com/candidates/46369420/thumb_photo_tybp7kegunl5.jpg",
+        "adminapp_url": "https://app.recruitee.com/#/dashboard/overview?candidate=46369420&company=89564",
+        "created_at": "2022-12-25T15:51:13.296237Z",
+        "gdpr_scheduled_to_delete_at": null,
+        "name": "Mariela Vasquez (Sample)",
+        "example": true,
+        "sources": [
+            "Careers site"
+        ],
+        "my_pending_result_request": false,
+        "cv_original_url": "https://recruitee-main.s3.eu-central-1.amazonaws.com/candidates/46369420/cv_tutdmhym8fec.pdf?response-content-disposition=attachment%3Bfilename%3Dmariela-vasquez-sample-cv.pdf&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYHB7CA5RLR4Y3ON%2F20230112%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20230112T144734Z&X-Amz-Expires=36000&X-Amz-SignedHeaders=host&X-Amz-Signature=7165a6c067e9bba19c42c47fcee8990b2ddfcf401940bcc366e13d6ce27292ff",
+        "unread_notifications": false,
+        "duplicates": [
+            46369420
+        ],
+        "emails": [
+            "marielavasquez@recruiteemail.com"
+        ],
+        "viewed": true,
+        "updated_at": "2022-12-25T15:51:13.296237Z",
+        "gdpr_status": "no_consent",
+        "ratings": {},
+        "referral_referrers_ids": [],
+        "grouped_open_question_answers": [],
+        "cv_processing_status": "ok",
+        "my_last_rating": null,
+        "gdpr_consent_request_type": null,
+        "pending_result_request": false,
+        "photo_url": "https://recruitee-main.s3.eu-central-1.amazonaws.com/candidates/46369420/normal_photo_tybp7kegunl5.jpg",
+        "placements": [
+            {
+                "candidate_id": 46369420,
+                "created_at": "2022-12-25T15:51:13.296237Z",
+                "hired_at": null,
+                "hired_by_id": null,
+                "hired_in_other_placement": false,
+                "hired_in_this_placement": false,
+                "id": 49145819,
+                "job_starts_at": null,
+                "language": null,
+                "offer_id": 1188054,
+                "overdue_at": null,
+                "overdue_diff": null,
+                "position": 2,
+                "positive_ratings": null,
+                "rating_visible": true,
+                "ratings": {},
+                "stage_id": 8091162,
+                "updated_at": "2022-12-25T15:51:13.296237Z"
+            }
+        ],
+        "rating": 0.0,
+        "sourcing_origin": null,
+        "last_activity_at": "2022-12-25T15:51:13.296237Z",
+        "sourcing_data": null,
+        "positive_ratings": null,
+        "gdpr_consent_request_sent_at": null,
+        "tasks_count": 1,
+        "phones": [
+            "+15555555555"
+        ],
+        "gdpr_consent_ever_given": false,
+        "has_avatar": true,
+        "ratings_count": 0,
+        "custom_fields": [],
+        "tags": [
+            "Sample",
+            "Senior"
+        ],
+        "notes_count": 1,
+        "gdpr_expires_at": null,
+        "followed": false,
+        "pending_request_link": false,
+        "upcoming_event": false,
+        "last_message_at": null,
+        "admin_id": null,
+        "fields": [
+            {
+                "fixed": true,
+                "id": 108442221,
+                "kind": "language_skill",
+                "options": {},
+                "origin": "parsed",
+                "values": [
+                    {
+                        "language_code": "en",
+                        "language_name": "English",
+                        "level": "native"
+                    },
+                    {
+                        "language_code": "fr",
+                        "language_name": "French",
+                        "level": "advanced"
+                    }
+                ],
+                "visibility": {
+                    "admin_ids": [],
+                    "level": "public",
+                    "role_ids": []
+                },
+                "visible": true
+            },
+            {
+                "fixed": true,
+                "id": 108442222,
+                "kind": "skills",
+                "origin": "manual",
+                "values": [
+                    {
+                        "text": "Microsoft Word"
+                    },
+                    {
+                        "text": "Microsoft Excel"
+                    },
+                    {
+                        "text": "Access"
+                    },
+                    {
+                        "text": "PC"
+                    },
+                    {
+                        "text": "Mac"
+                    },
+                    {
+                        "text": "Leadership"
+                    },
+                    {
+                        "text": "Personal skills"
+                    },
+                    {
+                        "text": "Planning skills"
+                    }
+                ],
+                "visibility": {
+                    "admin_ids": [],
+                    "level": "public",
+                    "role_ids": []
+                },
+                "visible": true
+            },
+            {
+                "fixed": true,
+                "id": 108442223,
+                "kind": "address",
+                "origin": "parsed",
+                "values": [
+                    {
+                        "text": "Street Name 1234, 92507 Riverside, Us California, United States"
+                    }
+                ],
+                "visibility": {
+                    "admin_ids": [],
+                    "level": "public",
+                    "role_ids": []
+                },
+                "visible": true
+            },
+            {
+                "fixed": true,
+                "id": 108442224,
+                "kind": "single_line",
+                "name": "Time zone",
+                "origin": "manual",
+                "values": [
+                    {
+                        "text": "GMT+4"
+                    }
+                ],
+                "visibility": {
+                    "admin_ids": [],
+                    "level": "public",
+                    "role_ids": []
+                },
+                "visible": true
+            },
+            {
+                "fixed": true,
+                "id": 108442226,
+                "kind": "dropdown",
+                "name": "Set-up",
+                "options": {
+                    "values": [
+                        "Personal computer",
+                        "Company's MacBook"
+                    ]
+                },
+                "origin": "manual",
+                "values": [
+                    {
+                        "value": "Personal computer"
+                    }
+                ],
+                "visibility": {
+                    "admin_ids": [],
+                    "level": "public",
+                    "role_ids": []
+                },
+                "visible": true
+            },
+            {
+                "fixed": true,
+                "id": 108442225,
+                "kind": "boolean",
+                "name": "Mentor",
+                "origin": "manual",
+                "values": [
+                    {
+                        "flag": false
+                    }
+                ],
+                "visibility": {
+                    "admin_ids": [],
+                    "level": "public",
+                    "role_ids": []
+                },
+                "visible": true
+            },
+            {
+                "fixed": true,
+                "id": 108442227,
+                "kind": "single_line",
+                "name": "Salary expectation",
+                "origin": "manual",
+                "values": [
+                    {
+                        "text": "4,000 - 7,000 EUR"
+                    }
+                ],
+                "visibility": {
+                    "admin_ids": [
+                        152125
+                    ],
+                    "level": "protected",
+                    "role_ids": [
+                        534627,
+                        534628,
+                        534629
+                    ]
+                },
+                "visible": true
+            },
+            {
+                "fixed": true,
+                "id": null,
+                "kind": "education",
+                "origin": "manual",
+                "values": [],
+                "visibility": {
+                    "admin_ids": [],
+                    "level": "public",
+                    "role_ids": []
+                },
+                "visible": true
+            },
+            {
+                "fixed": true,
+                "id": null,
+                "kind": "experience",
+                "origin": "manual",
+                "values": [],
+                "visibility": {
+                    "admin_ids": [],
+                    "level": "public",
+                    "role_ids": []
+                },
+                "visible": true
+            }
+        ],
+        "my_upcoming_event": false
+    },
+    "references": [
+        {
+            "department_id": 288443,
+            "guid": "562ft",
+            "id": 1188054,
+            "kind": "job",
+            "lang_code": "en",
+            "location": "New York, United States",
+            "position": 3,
+            "slug": "senior-marketer-sample-london",
+            "status": "published",
+            "title": "Senior Marketer (Sample)",
+            "type": "Offer"
+        },
+        {
+            "action_templates": [],
+            "category": "apply",
+            "created_at": "2023-01-10T15:51:13.257801Z",
+            "fair_evaluations_enabled": false,
+            "group": "applicants",
+            "id": 8091162,
+            "locked": true,
+            "name": "Applied",
+            "placements_count": null,
+            "position": -1,
+            "time_limit": null,
+            "type": "Stage",
+            "updated_at": "2023-01-10T15:51:13.257802Z"
+        }
+    ]
+}

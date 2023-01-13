@@ -48,6 +48,18 @@
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="{{ url_for('offers.list_offers') }}">Jobs</a></li>
+          {% if current_user.is_authenticated %}
+          <li><a href="{{ url_for('offers.create_offer') }}">New Job</a></li>
+          <li><a href="{{ url_for('users.logout') }}">Logout</a></li>
+          {% else %}
+          <li><a href="{{ url_for('users.login') }}">Login</a></li>
+          {% endif%}
+        </ul>
+      </nav><!-- .navbar -->
+
     </div>
   </header><!-- End Header -->
   <!-- ======= Hero Section ======= -->
@@ -56,9 +68,26 @@
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
-    {% block breadcrumbs %} {% endblock breadcrumbs %}
+    {% block breadcrumbs %}
+    <div class="breadcrumbs d-flex align-items-center"
+      style="background-image: url({{ url_for('static', filename='img/hero-bg.jpg') }});">
+      <div class="container position-relative d-flex flex-column align-items-center">
+        <h2>{{title}}</h2>
+      </div>
+    </div>
+    {% endblock breadcrumbs %}
+
     <!-- End Breadcrumbs -->
 
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{category}}">
+      {{ message }}
+    </div>
+    {% endfor %}
+    {% endif%}
+    {% endwith %}
     {% block content %}
     {% endblock content %}
   </main>

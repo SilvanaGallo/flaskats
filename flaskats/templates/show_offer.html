@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+
+{% block hero_content %}
+<section id="hero" class="hero d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-4">
+        <h2>{{ offer.title }}</h2>
+        <blockquote data-aos-delay="1">
+          <p>{{ offer.description }}</p>
+          <p class="article-content">Salary range: {{ offer.salary_range }}</p>
+        </blockquote>
+
+        <blockquote data-aos-delay="1">
+          <p><strong>Requirements: </strong></p>
+          <p>{{ offer.requirements }}</p>
+
+          <p>External id: {{ offer.repository_id }}</p>
+          <p>Reference code: {{ offer.code }}</p>
+
+
+          {% if current_user.is_authenticated %}
+          <p>Offer Status: {{ offer.status }}</p>
+
+        </blockquote>
+        {% else %}
+        </blockquote>
+        <div class="d-flex" data-aos-delay="2">
+          <a href="{{ url_for('offers.application', code_offer=offer.code) }}" class="btn-get-started">Join us</a>
+        </div>
+        {% endif %}
+        <br />
+        <a class="back-button" onclick="history.back()" type="button">Back</a>
+
+      </div>
+    </div>
+  </div>
+</section><!-- End Hero Section -->
+
+{% endblock hero_content %}
+{% block breadcrumbs %}
+{% endblock breadcrumbs %}

@@ -1,0 +1,111 @@
+{% extends "layout.html" %}
+{% block content %}
+<section id="contact" class="contact">
+  <div class="container position-relative">
+    <div class="row gy-4 d-flex>
+      <div class=" col-lg-6">
+      <div class="card">
+        <div class="card-title"></div>
+        <div class="card-body">
+          <form method="POST" action="" role="form">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+              <div class="form-group mt-3">
+                {{ form.title.label(class="form-control-label") }}
+
+                {% if form.title.errors %}
+                {{ form.title(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                  {% for error in form.title.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+                {% else %}
+                {{ form.title(class="form-control") }}
+                {% endif %}
+              </div>
+
+              <div class="form-group mt-3">
+                {{ form.code.label(class="form-control-label") }}
+                {% if form.code.errors %}
+                {{ form.code(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                  {% for error in form.code.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+                {% else %}
+                {{ form.code(class="form-control") }}
+                {% endif %}
+              </div>
+
+              <div class="form-group mt-3">
+                {{ form.salary_range.label(class="form-control-label") }}
+                {% if form.salary_range.errors %}
+                {{ form.salary_range(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                  {% for error in form.salary_range.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+                {% else %}
+                {{ form.salary_range(class="form-control") }}
+                {% endif %}
+              </div>
+
+              <div class="form-group mt-3">
+                {{ form.description.label(class="form-control-label") }}
+                {% if form.description.errors %}
+                {{ form.description(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                  {% for error in form.description.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+                {% else %}
+                {{ form.description(class="form-control") }}
+                {% endif %}
+              </div>
+
+              <div class="form-group mt-3">
+                {{ form.requirements.label(class="form-control-label") }}
+                {% if form.requirements.errors %}
+                {{ form.requirements(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                  {% for error in form.requirements.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+                {% else %}
+                {{ form.requirements(class="form-control") }}
+                {% endif %}
+              </div>
+
+              <div class="form-group mt-3">
+                {{ form.repository_id.label(class="form-control-label") }}
+                {% if form.repository_id.errors %}
+                {{ form.repository_id(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                  {% for error in form.repository_id.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+                {% else %}
+                {{ form.repository_id(class="form-control") }}
+                {% endif %}
+              </div>
+            </fieldset>
+
+            <div class="text-center">
+              <br />
+              {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+          </form>
+          <a class="back-button" onclick="history.back()" type="button">Back</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+{% endblock content %}

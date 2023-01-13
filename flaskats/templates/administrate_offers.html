@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+{% block content %}
+<section id="contact" class="contact">
+    <div class="container position-relative">
+        <div class="row gy-4 d-flex justify-content-end">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-title">
+
+                    </div>
+                    <div class="card-body">
+                        <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+                            <div class="dataTable-container">
+                                <table class="table datatable dataTable-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" data-sortable="" style="width: 2%;">
+                                                <a href="#" class="dataTable-sorter">Code</a>
+                                            </th>
+                                            <th scope="col" data-sortable="" style="width: 10%;">
+                                                <a href="#" class="dataTable-sorter">Title</a>
+                                            </th>
+                                            <th scope="col" data-sortable="" style="width: 48%;">
+                                                <a href="#" class="dataTable-sorter">Description</a>
+                                            </th>
+                                            <th scope="col" data-sortable="" style="width: 5%;">
+                                                <a href="#" class="dataTable-sorter">Status</a>
+                                            </th>
+                                            <th scope="col" data-sortable="" style="width: 9%;">
+                                                <a href="#" class="dataTable-sorter">External id</a>
+                                            </th>
+                                            <th scope="col" data-sortable="" style="width: 25%;">
+                                                <a href="#" class="dataTable-sorter">Actions</a>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for offer in offers.items %}
+                                        <tr>
+                                            <th>{{ offer.code }}</th>
+                                            <td><a href="{{ url_for('offers.show_offer', offer_code=offer.code) }}"
+                                                    class="dataTable-sorter">{{ offer.title }}</a></td>
+                                            <td>{{ offer.description }}</td>
+                                            <td>{{ offer.status }}</td>
+                                            <td>{{ offer.repository_id }}</td>
+                                            <td>
+                                                <span class="btn-group">
+                                                    {% if not offer.published() %}
+                                                    <button type="button" class="btn btn-success rounded-pill">
+                                                        <i class="bi bi-check-circle">
+                                                            <a href="{{ url_for('offers.publish_offer', id=offer.id) }}"
+                                                                class="linka">Publish</a>
+                                                        </i>
+                                                    </button>
+                                                    {% endif%}
+                                                    <button type="button" class="btn btn-primary rounded-pill">
+                                                        <i class="bi bi-pencil">
+                                                            <a href="{{ url_for('offers.update_offer', id=offer.id)}}"
+                                                                class="linka">Edit</a>
+                                                        </i>
+                                                    </button>
+                                                    <form
+                                                        action="{{ url_for('offers.delete_offer', offer_code=offer.code)}}"
+                                                        method="POST">
+                                                        <button type="submit" class="btn btn-danger rounded-pill">
+                                                            <i class="bi bi-exclamation-octagon"> Delete</i>
+                                                        </button>
+                                                    </form>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="dataTable-bottom">
+                                <!-- Basic Pagination -->
+                                <nav>
+                                    <ul class="pagination justify-content-center">
+                                        {% for page_num in offers.iter_pages(left_edge=1, right_edge=1, left_current=1,
+                                        right_current=2) %}
+                                        {% if page_num %}
+                                        {% if offers.page == page_num %}
+                                        <li class="page-item active"><a class="page-link"
+                                                href="{{ url_for('offers.list_offers', page=page_num) }}">{{page_num}}</a>
+                                        </li>
+
+                                        {% else %}
+                                        <li class="page-item"><a class="page-link"
+                                                href="{{ url_for('offers.list_offers', page=page_num) }}">{{page_num}}</a>
+                                        </li>
+                                        {% endif%}
+                                        {% else %}
+                                        <li class="page-item">...</li>
+                                        {% endif%}
+                                        {% endfor %}
+                                    </ul>
+                                </nav><!-- End Basic Pagination -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+{% endblock content %}

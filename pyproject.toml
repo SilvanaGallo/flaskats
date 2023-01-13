@@ -13,3 +13,7 @@ markers = [
     'slow',
     'flaky'
 ]
+
+[mypy-foobar.*]
+ignore_missing_imports = True
+
