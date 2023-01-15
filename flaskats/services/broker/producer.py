@@ -1,4 +1,4 @@
-from flaskats.services import RabbitmqConnection
+from flaskats.services.broker import RabbitmqConnection
 
 
 class Producer(RabbitmqConnection):

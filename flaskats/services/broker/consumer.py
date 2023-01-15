@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from flaskats.services import RabbitmqConnection
+from flaskats.services.broker import RabbitmqConnection
 
 
 class Consumer(RabbitmqConnection):
@@ -10,7 +10,7 @@ class Consumer(RabbitmqConnection):
     @abstractmethod
     def on_message_received(self, ch, method, properties, body):
         '''To be implemented in subclasses'''
-        return
+        raise NotImplementedError
 
     def start(self):
         '''Starts the consumer function'''

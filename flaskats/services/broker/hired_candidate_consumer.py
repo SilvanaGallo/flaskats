@@ -1,4 +1,4 @@
-from flaskats.services import Consumer
+from flaskats.services.broker import Consumer
 from flaskats.dtos import Application
 
 

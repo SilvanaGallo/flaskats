@@ -1,6 +1,6 @@
 from flaskats.dtos import Application
 from flaskats.models import ApplicationStatus
-from flaskats.services import Producer
+from flaskats.services.broker import Producer
 
 
 class CandidateNotifier:

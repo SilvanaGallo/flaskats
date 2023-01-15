@@ -4,14 +4,14 @@ import json
 import signal
 import time
 from flask.cli import with_appcontext
-from flaskats.services import RecruiteeRepository, ApplicationConsumer,\
-    HelloSignContractSender, HiredCandidateConsumer,\
+from flaskats.services.broker import  ApplicationsConsumer, HiredCandidateConsumer
+from flaskats.services import RecruiteeRepository, HelloSignContractSender,\
     MailSender, CandidateNotifier
 from flaskats import mail
 
 
 repository = RecruiteeRepository()
-application_worker = ApplicationConsumer(repository=repository)
+application_worker = ApplicationsConsumer(repository=repository)
 contract_sender = HelloSignContractSender()
 hired_worker = HiredCandidateConsumer(queue='hired', contract_sender=contract_sender)
 mail_sender = MailSender(mail)

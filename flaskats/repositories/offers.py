@@ -6,7 +6,7 @@ from flaskats import db
 class OffersRepository(ABC):
 
     @abstractmethod
-    def get_offers(self, per_page=10, page=1):
+    def get_offers(self, per_page, page):
         return
 
     @abstractmethod
@@ -14,7 +14,7 @@ class OffersRepository(ABC):
         return
 
     @abstractmethod
-    def get_published_offers(self, per_page=10, page=1):
+    def get_published_offers(self, per_page, page):
         return
 
     @abstractmethod
@@ -44,10 +44,10 @@ class OffersRepository(ABC):
 
 class SQLAlchemyOffersRepository(OffersRepository):
 
-    def get_offers(self, per_page, page):
+    def get_offers(self, per_page=2, page=1):
         return Offer.query.paginate(per_page=per_page, page=page)
 
-    def get_published_offers(self, per_page=10, page=1):
+    def get_published_offers(self, per_page=2, page=1):
         return Offer.query.filter_by(status=OfferStatus.PUBLISHED)\
                             .paginate(per_page=per_page, page=page)
 

@@ -18,12 +18,9 @@ login_manager.login_message_category = 'info'
 
 mail = Mail()
 
-offers_repository = None
-
 
 def create_app(config_class=Config):
     from flaskats.cli import start_applications_worker, check_candidates, send_offers
-    from flaskats.repositories import SQLAlchemyOffersRepository
 
     app = Flask(__name__)
     app.config.from_object(config_class)
@@ -33,9 +30,6 @@ def create_app(config_class=Config):
     bcrypt.init_app(app)
     login_manager.init_app(app)
     mail.init_app(app)
-
-    listOfGlobals = globals()
-    listOfGlobals['offers_repository'] = SQLAlchemyOffersRepository()
 
     from flaskats.blueprints.users.routes import users
     from flaskats.blueprints.offers.routes import offers

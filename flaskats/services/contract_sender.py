@@ -1,21 +1,21 @@
 from abc import ABC, abstractmethod
 import requests
 from flaskats import Config
-from flaskats.dtos import Application
 
 
 class ContractSender(ABC):
 
     @abstractmethod
     def send_contract(self, app_dto):
-        return
+        raise NotImplementedError('Subclasses must override send_contract(self, app_dto)!')
 
 
 class HelloSignContractSender(ContractSender):
 
     # sender URLs variable
-    sender_url = f"https://{Config.HS_API_KEY}:@api.hellosign.com//v3/signature_request/send"
-    headers = {'accept': 'application/json'}
+    sender_url = f"https://{Config.HS_API_KEY}:@api.hellosign.com/v3/signature_request/send"
+    headers = {'accept': 'application/json',
+               'content-type': 'application/json'}
 
     file_url = "https://www.dropbox.com/s/711oti8ak0xb7ke/contract_model.pdf?dl=0"
 

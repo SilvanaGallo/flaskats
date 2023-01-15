@@ -2,7 +2,10 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, TextAreaField, IntegerField
 from wtforms.widgets import HiddenInput
 from wtforms.validators import DataRequired, Length, Email, ValidationError, Optional
-from flaskats import offers_repository
+from flaskats.repositories import SQLAlchemyOffersRepository
+
+
+offers_repository = SQLAlchemyOffersRepository()
 
 
 class ApplicationForm(FlaskForm):

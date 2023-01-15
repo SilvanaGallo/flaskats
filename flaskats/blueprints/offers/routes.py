@@ -3,22 +3,24 @@ from flask import render_template, url_for, flash, redirect, request, Blueprint
 from flask_login import current_user, login_required
 from flaskats.blueprints.offers import OfferForm, OfferUpdateForm, ApplicationForm
 from flaskats.dtos import Offer, Application
-from flaskats import offers_repository
-from flaskats.services import Producer
+from flaskats.repositories import SQLAlchemyOffersRepository
+from flaskats.services.broker import Producer
 
 
 offers = Blueprint('offers', __name__)
+offers_repository = SQLAlchemyOffersRepository()
 
 
 @offers.route("/", methods=['GET'])
 def list_offers():
     offers = []
     page = request.args.get('page', 1, type=int)
+    per_page = 2
     if current_user.is_authenticated:
-        offers = offers_repository.get_offers(per_page=10, page=page)
+        offers = offers_repository.get_offers(per_page=per_page, page=page)
         return render_template('administrate_offers.html', title='Job Offers', offers=offers)
     else:
-        offers = offers_repository.get_published_offers(per_page=10, page=page)
+        offers = offers_repository.get_published_offers(per_page=per_page, page=page)
         return render_template('published_offers.html', title='Published Job Offers', offers=offers)
 
 
