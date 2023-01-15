@@ -395,19 +395,19 @@ class TestRecruiteeRepository:
         assert resp["candidate"]["name"] == application_dtos["rec560UJdUtocSouk"]["name"]
         assert resp["candidate"]["emails"][0] == application_dtos["rec560UJdUtocSouk"]["email"]
 
-    # @pytest.mark.unit
+    @pytest.mark.unit
     # @mock.patch('flaskats.services.RecruiteeRepository.SQLAlchemyOffersRepository', spec=SQLAlchemyOffersRepository)
-    # def test_list_records(self, requests_mock):
+    def test_list_records(self, requests_mock):
+        assert False
+        # requests_mock.get(RecruiteeRepository.candidates_url, text=self.LIST_RESPONSE)
+        # offers_repository = Mock()
+        # offers_repository.return_value.get_offer_by_repository_id.return_value.code.return_value = "ABC-123"
 
-    #     requests_mock.get(RecruiteeRepository.candidates_url, text=self.LIST_RESPONSE)
-    #     offers_repository = Mock()
-    #     offers_repository.return_value.get_offer_by_repository_id.return_value.code.return_value = "ABC-123"
+        # repo = RecruiteeRepository()
+        # resp = repo.list_records()
 
-    #     repo = RecruiteeRepository()
-    #     resp = repo.list_records()
-
-    #     assert len(resp["records"]) == 3
-    #     assert resp["records"][0]["name"] == "Wilma Roelendsen (Sample)"
+        # assert len(resp["records"]) == 3
+        # assert resp["records"][0]["name"] == "Wilma Roelendsen (Sample)"
 
     @pytest.mark.unit
     def test__create_json_update(self, application_dtos):
@@ -419,10 +419,10 @@ class TestRecruiteeRepository:
         assert result["candidates"][0] == "rec560UJdUtocSouk"
         assert result["tags"] == ["notified"]
 
-    # @pytest.mark.unit
+    @pytest.mark.unit
     # @mock.patch("flaskats.services.RecruiteeRepository.requests.patch")
-    # def test_update_notified_records(self, mock_requests_patch, application_dtos):
-
+    def test_update_notified_records(self): # , mock_requests_patch, application_dtos):
+        assert False
     #     mock_requests_patch.return_value = mock.Mock(**{"status_code": 200,
     #                                               "json.return_value":
     #                                                   self.UPDATE_RESPONSE})
@@ -432,13 +432,17 @@ class TestRecruiteeRepository:
     #     assert len(resp["status_code"]) == 200
     #     assert "uuid" in resp
 
-
-    # def get_candidate(self, app_dto):
+    @pytest.mark.unit
+    def test_get_candidate(self):
+        assert False
     #     url = f"{self.candidates_url}/{app_dto.candidate_id}"
     #     response = requests.get(url, headers=self.headers)
     #     return response
 
-    # def get_notified(self, app_dto) -> bool:
+    @pytest.mark.unit
+    def test_get_notified(self):
+        assert False
+    #  -> bool:
     #     response = self.get_candidate(app_dto)
     #     response = response.json()
     #     return "notified" in response["candidate"]["tags"]
