@@ -3,14 +3,15 @@ import os
 from flaskats import create_app, db
 from flask_mail import Mail
 from flaskats.services import RecruiteeRepository
-from flaskats.dtos import Application
+from flaskats.dtos import Application, Offer
+from flaskats.models import OfferStatus
 
 
 @pytest.fixture()
 def app():
     app = create_app()
     app.config.update({"TESTING": True,
-                       "DEBUG" : True,
+                       "DEBUG": True,
                        "WTF_CSRF_ENABLED": False,
                        "MAIL_SUPPRESS_SEND": True})
 
@@ -18,8 +19,9 @@ def app():
     yield app
     # clean up / reset resources here
 
+
 @pytest.fixture()
-def test_client_db(app):
+def testing_client(app):
     # set up
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///"
     with app.app_context():
@@ -38,9 +40,11 @@ def test_client_db(app):
         db.drop_all()
 
     ctx.pop()
-# @pytest.fixture()
-# def runner(app):
-#     return app.test_cli_runner()
+
+
+@pytest.fixture()
+def runner(app):
+    return app.test_cli_runner()
 
 
 @pytest.fixture()
@@ -53,3 +57,13 @@ def application_dtos():
                                             email="mail2@gmail.com",
                                             job="ABC-123",
                                             candidate_id="654321").to_dict()}
+
+@pytest.fixture()
+def offer_dto():
+    return Offer(title="A test offer",
+                    code="#code159",
+                    repository_id=123456,
+                    description="a very long description",
+                    requirements="many requirements",
+                    salary_range="5000-6000",
+                    status=OfferStatus.DRAFT)

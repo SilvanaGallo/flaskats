@@ -40,3 +40,14 @@ Enter to the command line and execute
 
 
 
+--------------------------------------------
+Improvements for next versions
+--------------------------------------------
+
+- Notifier responsabilities: Separate in a better way the functionality of check_candidates function, throw implementing other clases or services that help to accomplish this task.
+
+- Testing: Improve the test coverage (latest value 68%)
+
+- APIs: Consider response errors and delayed responses from APIs
+
+- Offer Deletion: Add a double confirmation for deletion

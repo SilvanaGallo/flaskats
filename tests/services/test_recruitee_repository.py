@@ -420,17 +420,16 @@ class TestRecruiteeRepository:
         assert result["tags"] == ["notified"]
 
     @pytest.mark.unit
-    # @mock.patch("flaskats.services.RecruiteeRepository.requests.patch")
-    def test_update_notified_records(self): # , mock_requests_patch, application_dtos):
-        assert False
-    #     mock_requests_patch.return_value = mock.Mock(**{"status_code": 200,
-    #                                               "json.return_value":
-    #                                                   self.UPDATE_RESPONSE})
-    #     repo = RecruiteeRepository()
-    #     resp = repo.update_notified_records(application_dtos)
+    @mock.patch("flaskats.services.RecruiteeRepository.requests.patch")
+    def test_update_notified_records(self, mock_requests_patch, application_dtos):
+        #assert False
+        mock_requests_patch.return_value = mock.Mock(**{"status_code": 200,
+                                "json.return_value": self.UPDATE_RESPONSE})
+        repo = RecruiteeRepository()
+        resp = repo.update_notified_records(application_dtos)
 
-    #     assert len(resp["status_code"]) == 200
-    #     assert "uuid" in resp
+        assert len(resp["status_code"]) == 200
+        assert "uuid" in resp
 
     @pytest.mark.unit
     def test_get_candidate(self):

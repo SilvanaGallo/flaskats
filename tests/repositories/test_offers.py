@@ -6,24 +6,9 @@ from flaskats.repositories import SQLAlchemyOffersRepository
 
 class TestSQLAlchemyOffersRepository(unittest.TestCase):
 
-    # def setUp(self, test_client_db):
-    #     with app.app_context():
-    #         db.create_all()
-
-    #         new_offer = Offer(title=offer_dto.title,
-    #                 code=offer_dto.code,
-    #                 repository_id=offer_dto.repository_id,
-    #                 description=offer_dto.description,
-    #                 requirements=offer_dto.requirements,
-    #                 salary_range=offer_dto.salary_range,
-    #                 status=OfferStatus.DRAFT)
-    #         Offer
-
-    # def tearDown(self, app):
-        
-    # @pytest.mark.unit
-    # def test_get_offers(self, app):
-
+    @pytest.mark.unit
+    def test_get_offers(self, app):
+        assert False
     #     with app.app_context():
     #         db.create_all()
 
@@ -44,26 +29,28 @@ class TestSQLAlchemyOffersRepository(unittest.TestCase):
             
     #         assert len(result.items) == 2
 
-    # def get_published_offers(self, per_page=2, page=1):
+    @pytest.mark.unit
+    def test_get_published_offers(self, per_page=2, page=1):
+        assert False
     #     return Offer.query.filter_by(status=OfferStatus.PUBLISHED)\
     #                         .paginate(per_page=per_page, page=page)
 
-    # def create_offer(self, offer_dto):
-    #     new_offer = Offer(title=offer_dto.title,
-    #                 code=offer_dto.code,
-    #                 repository_id=offer_dto.repository_id,
-    #                 description=offer_dto.description,
-    #                 requirements=offer_dto.requirements,
-    #                 salary_range=offer_dto.salary_range,
-    #                 status=OfferStatus.DRAFT)
-    #     db.session.add(new_offer)
-    #     db.session.commit()
-    #     return new_offer
+    @pytest.mark.unit
+    def test_create_offer(self, test_client_db, offer_dto):
+        assert False
+        # with test_client_db() as client:
+        #     client.create_offer(offer_dto)
 
-    # def get_offer(self, id):
+        #     assert 
+
+    @pytest.mark.unit
+    def test_get_offer(self, id):
+        assert False
     #     return Offer.query.get(id)
 
-    # def update_offer(self, offer_dto):
+    @pytest.mark.unit
+    def test_update_offer(self, offer_dto):
+        assert False
     #     updated_offer = Offer.query.get(offer_dto.id)
     #     updated_offer.title=offer_dto.title
     #     updated_offer.code=offer_dto.code
@@ -75,21 +62,29 @@ class TestSQLAlchemyOffersRepository(unittest.TestCase):
     #     db.session.commit()
     #     return updated_offer
 
-    # def publish_offer(self, id):
+    @pytest.mark.unit
+    def test_publish_offer(self, id):
+        assert False
     #     updated_offer = Offer.query.get(id)
     #     updated_offer.status=OfferStatus.PUBLISHED
     #     db.session.commit()
     #     return updated_offer  
 
-    # def get_offer_by_code(self, code):
+    @pytest.mark.unit
+    def test_get_offer_by_code(self, code):
+        assert False
     #     return Offer.query.filter_by(code=code).first()
 
-    # def get_offer_by_repository_id(self, repository_id):
+    @pytest.mark.unit
+    def test_get_offer_by_repository_id(self, repository_id):
+        assert False
     #     return Offer.query.filter_by(repository_id=repository_id).first()
 
-    # def delete_offer(self, code):
+    @pytest.mark.unit
+    def test_delete_offer(self, code):
+        assert False
     #     offer_to_delete = self.get_offer_by_code(code)
     #     db.session.delete(offer_to_delete)
     #     db.session.commit()
     #     return True
-    ...
+    
