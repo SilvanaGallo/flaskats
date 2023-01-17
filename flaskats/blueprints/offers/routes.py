@@ -102,7 +102,7 @@ def application():
                                   name=form.name.data,
                                   email=form.email.data)
         # Queue application
-        producer = Producer(queue='application')
+        producer = Producer(queue='applications')
         producer.submit_event(application)
 
         flash('Your application has been sent!', 'success')

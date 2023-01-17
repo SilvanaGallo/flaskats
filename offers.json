@@ -1,13 +1,25 @@
 {
     "offers": [
         {
+            "department_id": null,
+            "guid": "wsetg",
+            "id": 1194303,
+            "kind": "job",
+            "lang_code": "en",
+            "location": "Remote job",
+            "position": 6,
+            "slug": "devops",
+            "status": "published",
+            "title": "DevOps"
+        },
+        {
             "department_id": 288441,
             "guid": "dy5ws",
             "id": 1188242,
             "kind": "job",
             "lang_code": "en",
             "location": "Remote job",
-            "position": 5,
+            "position": 4,
             "slug": "python-developer",
             "status": "published",
             "title": "Python developer"

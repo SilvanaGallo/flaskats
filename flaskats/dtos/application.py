@@ -10,8 +10,8 @@ class Application:
 
     name: str
     email: str
-    candidate_id: int
     job: str
+    candidate_id: int = 0
     disqualify_reason: str = ''
     hired_at: str = ""
     date: str = datetime.now().isoformat()
